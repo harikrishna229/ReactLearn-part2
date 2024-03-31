@@ -42,3 +42,6 @@
     cursor: pointer;
     border: 1px solid black;
 }
+.filterbtn{
+    margin: 10px;
+}

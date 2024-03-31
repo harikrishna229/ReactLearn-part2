@@ -1,59 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-/**
- * app layout 
- *   header
- *   body
- *   footer
- * 
- * header
- *   -log0
- *    nav items
- * body
- *   search
- *   rest.container
- *      rest.card
- * footer
- *    copyrights
- *    adrress
- *    contact
- 
- */ 
-const Header= ()=>{
-    return (
-        <div className="Header">
-            <div className="logocontainer">
-                <img className="logo" src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png"/>
-            </div>
-            <div className="navitems">
-                <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact us</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    );
-
-};
-
-const Restcard= (props)=>{
-    const {name,cuisines,avgRating,sla,cloudinaryImageId}=props?.restdata;
-    console.log(props);
-    return (
-       <div className="rescard">
-        <img className="reslogo" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+cloudinaryImageId}/>
-        <h3>{name}</h3>
-        <h4>{cuisines.join(", ")}</h4>
-        <h4>{avgRating} star</h4>
-        <h4>{sla.deliveryTime}minutes</h4>
-       </div>
-    );
-
-};
-
 const jsonobj =[
     {
       "info": {
@@ -959,33 +903,5 @@ const jsonobj =[
     }
   ];
 const restobj=jsonobj.map(obj=>obj.info);
-const Body= ()=>{
-    return (
-       <div className="body">
-            <div className="search"></div>
-            <div className="restcontainer">
-               {restobj.map((restaurant)=> (
-                <Restcard key={restaurant.id} restdata={restaurant}/>
-                ))} 
-            </div>
-       </div>
-    );
 
-};
-
-const Applayout= ()=>{
-    return (
-        <div>
-             <Header/>
-             <Body/>
-        </div>
-      
-    );
-
-};
-
-
-
-const root=ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Applayout/>); 
-
+export default restobj;
