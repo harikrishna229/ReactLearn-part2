@@ -40,15 +40,15 @@ const Header= ()=>{
 };
 
 const Restcard= (props)=>{
-    const {restdata}=props;
-    console.log(restdata);
+    const {name,cuisines,avgRating,sla,cloudinaryImageId}=props?.restdata;
+    console.log(props);
     return (
        <div className="rescard">
-        <img className="reslogo" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+restdata.cloudinaryImageId}/>
-        <h3>{restdata.name}</h3>
-        <h4>{restdata.cuisines.join(", ")}</h4>
-        <h4>{restdata.avgRating} star</h4>
-        <h4>{restdata.sla.deliveryTime}minutes</h4>
+        <img className="reslogo" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+cloudinaryImageId}/>
+        <h3>{name}</h3>
+        <h4>{cuisines.join(", ")}</h4>
+        <h4>{avgRating} star</h4>
+        <h4>{sla.deliveryTime}minutes</h4>
        </div>
     );
 
@@ -965,7 +965,7 @@ const Body= ()=>{
             <div className="search"></div>
             <div className="restcontainer">
                {restobj.map((restaurant)=> (
-                <Restcard restdata={restaurant}/>
+                <Restcard key={restaurant.id} restdata={restaurant}/>
                 ))} 
             </div>
        </div>
